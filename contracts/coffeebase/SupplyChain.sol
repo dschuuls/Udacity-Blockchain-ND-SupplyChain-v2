@@ -220,6 +220,8 @@ contract SupplyChain is Ownable, FarmerRole, DistributorRole, RetailerRole, Cons
     processed(_upc)
         // Call modifier to verify caller of this function
     verifyCaller(items[_upc].ownerID)
+            // Access Control List enforced by calling Smart Contract / DApp
+    onlyFarmer()
     {
         // Update the appropriate fields
         items[_upc].itemState = State.Packed;
